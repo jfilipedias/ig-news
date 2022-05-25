@@ -1,12 +1,20 @@
-import type { NextPage } from 'next'
+import type { NextPage, GetServerSideProps } from 'next'
 import Image from 'next/image'
 import Head from 'next/head'
 
 import { SubscribeButton } from '../components/SubscribeButton'
+import { stripe } from '../services/stripe'
 
 import styles from './home.module.scss'
 
-const Home: NextPage = () => {
+interface HomeProps {
+  product: {
+    priceId: string
+    amount: string
+  }
+}
+
+const Home: NextPage<HomeProps> = ({ product }: HomeProps) => {
   return (
     <>
       <Head>
@@ -19,10 +27,10 @@ const Home: NextPage = () => {
           <h1>News about the <span>React</span> world.</h1>
           <p>
             Get access to all the publications <br />
-            <span>for $9 month</span>
+            <span>for {product.amount} month</span>
           </p>
 
-          <SubscribeButton />
+          <SubscribeButton priceId={product.priceId} />
         </section>
 
         <Image
@@ -34,6 +42,24 @@ const Home: NextPage = () => {
       </main>
     </>
   )
+}
+
+export const getServerSideProps: GetServerSideProps = async () => {
+  const price = await stripe.prices.retrieve(process.env.STRIPE_PRICE_ID || '')
+
+  const product = {
+    priceId: price.id,
+    amount: new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD'
+    }).format(Number(price.unit_amount) / 100)
+  }
+
+  return {
+    props: {
+      product
+    }
+  }
 }
 
 export default Home
