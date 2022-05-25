@@ -24,6 +24,6 @@ export const SignInButton: React.FC = () => {
       <FaGithub color="#eba417" />
       Sign in with GitHub
     </button>
-  );
+  )
 }
 

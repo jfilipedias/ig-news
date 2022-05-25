@@ -2,6 +2,8 @@ import type { NextPage } from 'next'
 import Image from 'next/image'
 import Head from 'next/head'
 
+import { SubscribeButton } from '../components/SubscribeButton'
+
 import styles from './home.module.scss'
 
 const Home: NextPage = () => {
@@ -19,6 +21,8 @@ const Home: NextPage = () => {
             Get access to all the publications <br />
             <span>for $9 month</span>
           </p>
+
+          <SubscribeButton />
         </section>
 
         <Image

@@ -24,5 +24,5 @@ export const Header: React.FC = () => {
         <SignInButton />
       </div>
     </header>
-  );
+  )
 }
