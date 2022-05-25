@@ -32,7 +32,6 @@
 
       &+a {
         margin-left: 2rem;
-        ;
       }
 
       &.active {
@@ -51,5 +50,9 @@
         background: var(--yellow-500);
       }
     }
+  }
+
+  >button {
+    margin-left: auto;
   }
 }

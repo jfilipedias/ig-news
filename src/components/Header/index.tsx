@@ -1,7 +1,9 @@
-import React from 'react';
-import Image from 'next/image';
+import React from 'react'
+import Image from 'next/image'
 
-import styles from './styles.module.scss';
+import { SignInButton } from '../SignInButton'
+
+import styles from './styles.module.scss'
 
 export const Header: React.FC = () => {
   return (
@@ -18,6 +20,8 @@ export const Header: React.FC = () => {
           <a className={styles.active}>Home</a>
           <a>Posts</a>
         </nav>
+
+        <SignInButton />
       </div>
     </header>
   );
