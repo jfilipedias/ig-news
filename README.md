@@ -27,5 +27,5 @@ The command above will listen for webhooks from Stripe and forward them to the `
 After all setups, you can run the application with the following command:
 
 ```bash
-yarn start
+yarn dev
 ```
