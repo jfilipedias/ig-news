@@ -4,8 +4,9 @@
 - [Sass](https://sass-lang.com/)
 - [Next.js](https://nextjs.org/)
 - [NextAuth.js](https://next-auth.js.org/)
-- [Stripe](https://stripe.com/)
 - [Fauna](https://fauna.com/)
+- [Stripe](https://stripe.com/)
+- [Prismic CMS](https://prismic.io/)
 
 ## Getting started
 
@@ -28,4 +29,10 @@ After all setups, you can run the application with the following command:
 
 ```bash
 yarn dev
+```
+
+To edit the prismic CMS content you can run a local SliceMachine instance:
+
+```bash
+yarn slicemachine
 ```
