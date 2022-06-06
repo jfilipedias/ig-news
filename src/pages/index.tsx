@@ -18,7 +18,7 @@ const Home: NextPage<HomeProps> = ({ product }: HomeProps) => {
   return (
     <>
       <Head>
-        <title>ig.news</title>
+        <title>Home | ig.news</title>
       </Head>
 
       <main className={styles.contentContainer}>
