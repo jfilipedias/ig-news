@@ -1,5 +1,6 @@
-import { NextPage } from 'next'
+import { GetStaticProps, NextPage } from 'next'
 import Head from 'next/head'
+import { getPrismicClient } from '../../services/prismic'
 
 import styles from './styles.module.scss'
 
@@ -33,6 +34,22 @@ const Posts: NextPage = () => {
       </main>
     </>
   )
+}
+
+export const getStaticProps: GetStaticProps = async () => {
+  const prismic = getPrismicClient()
+
+  const response = await prismic.getByType(
+    'post',
+    {
+      fetch: ['post.title', 'post.content'],
+      pageSize: 100
+    }
+  )
+
+  return {
+    props: {}
+  }
 }
 
 export default Posts
