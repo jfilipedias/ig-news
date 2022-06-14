@@ -57,9 +57,15 @@ const PostPreview: NextPage<PostPreviewProps> = ({ post }: PostPreviewProps) => 
   )
 }
 
-export const getStaticPaths: GetStaticPaths = () => {
+export const getStaticPaths: GetStaticPaths = async () => {
   return {
-    paths: [],
+    paths: [
+      {
+        params: {
+          slug: 'mapas-com-react-usando-leaflet'
+        }
+      }
+    ],
     fallback: 'blocking'
   }
 }
@@ -84,7 +90,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   return {
     props: {
       post,
-    }
+    },
+    revalidate: 60 * 30 // 30 minutes
   }
 }
 

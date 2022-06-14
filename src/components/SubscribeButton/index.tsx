@@ -34,7 +34,9 @@ export const SubscribeButton: React.FC<SubscribeButtonProps> = ({
       const stripe = await getStripeJs()
       await stripe?.redirectToCheckout({ sessionId })
     } catch (error) {
-      alert(error.message)
+      if (error instanceof Error) {
+        alert(error.message)
+      }
     }
   }
 
